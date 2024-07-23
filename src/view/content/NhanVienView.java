@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -185,6 +186,19 @@ public class NhanVienView extends javax.swing.JInternalFrame {
             java.util.Date ngaySinh;
             try {
                 ngaySinh = dateFormat.parse(ngaySinhStr);
+
+                // Extract the year from the parsed date
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(ngaySinh);
+                int year = calendar.get(Calendar.YEAR);
+
+                // Define a valid range for the year (for example, from 1900 to the current year)
+                int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+                if (year < 1900 || year > currentYear) {
+                    JOptionPane.showMessageDialog(this, "Năm sinh không hợp lệ! Năm sinh phải trong khoảng từ 1900 đến " + currentYear + ".");
+                    return null;
+                }
+
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(this, "Ngày sinh không hợp lệ! Định dạng phải là dd/MM/yyyy.");
                 return null;
@@ -267,6 +281,19 @@ public class NhanVienView extends javax.swing.JInternalFrame {
             java.util.Date ngaySinh;
             try {
                 ngaySinh = dateFormat.parse(ngaySinhStr);
+
+                // Extract the year from the parsed date
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(ngaySinh);
+                int year = calendar.get(Calendar.YEAR);
+
+                // Define a valid range for the year (for example, from 1900 to the current year)
+                int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+                if (year < 1900 || year > currentYear) {
+                    JOptionPane.showMessageDialog(this, "Năm sinh không hợp lệ! Năm sinh phải trong khoảng từ 1900 đến " + currentYear + ".");
+                    return null;
+                }
+
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(this, "Ngày sinh không hợp lệ! Định dạng phải là dd/MM/yyyy.");
                 return null;
@@ -635,7 +662,7 @@ public class NhanVienView extends javax.swing.JInternalFrame {
         });
 
         btSearch.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btSearch.setForeground(new java.awt.Color(255, 51, 204));
+        btSearch.setForeground(new java.awt.Color(255, 0, 0));
         btSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Search.png"))); // NOI18N
         btSearch.setText("Search");
         btSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -650,7 +677,8 @@ public class NhanVienView extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("Clear");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/List.png"))); // NOI18N
+        jButton1.setText("LoadAll");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -673,7 +701,7 @@ public class NhanVienView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
