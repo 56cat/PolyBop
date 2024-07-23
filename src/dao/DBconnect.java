@@ -1,45 +1,50 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package dao;
+package Respository;
 
-import java.sql.Connection; 
-import java.sql.DriverManager; 
-import java.sql.SQLException; 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
- * @author Admin
+ * @author Bravo15
  */
-public class DBconnect {
-     
-    public static final String HOSTNAME = "localhost";
-    public static final String PORT = "1433";
-    public static final String DBNAME = "PoLyBop_01";
-    public static final String USERNAME = "sa";
-    public static final String PASSWORD = "123456";
+public class DBConnect {
+    public static String URL = "jdbc:sqlserver://localhost\\BISNH\\SQLEXPRESS:1433;databaseName=PoLyBop;encrypt=true;trustServerCertificate=true;";
+    public static String USERNAME = "sa";
+    public static String PASS = "123456";
 
-    public static Connection getConnection() {
-        String url = "jdbc:sqlserver://" + HOSTNAME + ":" + PORT + ";" + "databaseName=" + DBNAME;
+    static {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            return DriverManager.getConnection(url, USERNAME, PASSWORD);     
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace(System.out);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
     }
 
-    
+    public static Connection getConnection() {
+        Connection cn = null;
+        try {
+            cn = DriverManager.getConnection(URL, USERNAME, PASS);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cn;
+    }
+
     public static void main(String[] args) {
-        try (Connection conn = getConnection()) {
-            if (conn != null) {
-                System.out.println("Kết nối thành công!");
-            } else {
-                System.out.println("Kết nối thất bại!");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        Connection cn = getConnection();
+        if (cn != null) {
+            System.out.println("Done!!");
+        } else {
+            System.out.println("Error !!");
         }
     }
+   
+    
 }
