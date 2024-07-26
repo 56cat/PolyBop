@@ -4,7 +4,7 @@
  */
 package controller;
 
-import Respository.DBConnect;
+import dao.DBConnect;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
