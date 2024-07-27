@@ -4,7 +4,7 @@
  */
 package controller;
 
-import Respository.DBConnect;
+import dao.DBconnect;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -25,7 +25,7 @@ public class NhanVienServiceImpl implements NhanVienService {
 
     public NhanVienServiceImpl() {
         try {
-            conn = DBConnect.getConnection();
+            conn = DBconnect.getConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
