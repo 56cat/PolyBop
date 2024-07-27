@@ -4,7 +4,7 @@
  */
 package view;
 
-import view.content.SanPhamView;
+//import view.content.SanPhamView;
 import java.awt.Color;
 import view.content.BanHangView;
 import view.content.HoaDonView;
@@ -439,9 +439,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menu1MousePressed
 
     private void menu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu4MouseClicked
-        SanPhamView spView = new SanPhamView();
-        desktopPanel.removeAll();
-        desktopPanel.add(spView).setVisible(true);
+//        SanPhamView spView = new SanPhamView();
+//        desktopPanel.removeAll();
+//        desktopPanel.add(spView).setVisible(true);
     }//GEN-LAST:event_menu4MouseClicked
 
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
