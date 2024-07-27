@@ -5,7 +5,7 @@
 package controller;
 
 import model.KhuyenMai;
-import Respository.DBConnect;
+import dao.DBConnect;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;

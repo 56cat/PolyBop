@@ -23,7 +23,7 @@ import model.KhuyenMai;
  *
  * @author Admin
  */
-import Respository.DBConnect;
+import dao.DBConnect;
 public class KhuyenMaiView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel tableModel = new DefaultTableModel();
