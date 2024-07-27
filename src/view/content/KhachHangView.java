@@ -682,6 +682,12 @@ public class KhachHangView extends javax.swing.JInternalFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
 
+        int row = this.tblKhachHang.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Chọn 1 dòng để sửa");
+            return;
+        }
+
         try {
             parsedDate = dateFormat.parse(ngaySinh);
             if (!validateDate(parsedDate)) {
@@ -691,11 +697,6 @@ public class KhachHangView extends javax.swing.JInternalFrame {
         } catch (ParseException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ngày sinh không đúng định dạng (dd/MM/yyyy)");
-            return;
-        }
-        int row = this.tblKhachHang.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Chọn 1 dòng để sửa");
             return;
         }
         KhachHang kh = this.getFormData();
