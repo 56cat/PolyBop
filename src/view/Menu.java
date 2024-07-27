@@ -1,17 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package view;
 
+import view.content.SanPhamView;
 import java.awt.Color;
 import view.content.BanHangView;
 import view.content.HoaDonView;
 import view.content.KhachHangView;
 import view.content.KhuyenMaiView;
 import view.content.NhanVienView;
-import view.content.SanPhamView;
 import view.content.TrangChuView;
 
+/**
+ *
+ * @author Admin
+ */
 public class Menu extends javax.swing.JFrame {
 
-    
+    /**
+     * Creates new form Menu
+     */
     Color DefaultColor, ClickColor;
 
     public Menu() {
@@ -26,11 +36,9 @@ public class Menu extends javax.swing.JFrame {
         menu5.setBackground(DefaultColor);
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
-
     }
 
-   
-    @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
