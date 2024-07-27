@@ -1,6 +1,7 @@
 package model;
 
 public class ThuongHieu {
+
     private int idThuongHieu;
     private String Ma_ThuongHieu;
     private String ten_ThuongHieu;
@@ -47,6 +48,4 @@ public class ThuongHieu {
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
-
-    
 }
