@@ -43,13 +43,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="desktopPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-<<<<<<< HEAD
-=======
                   <Component id="desktopPanel" min="-2" max="-2" attributes="0"/>
->>>>>>> 43bee69a84fc9dc7860ed30d990062048d8fdf03
               </Group>
           </Group>
         </DimensionLayout>
@@ -57,16 +52,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-<<<<<<< HEAD
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="desktopPanel" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-=======
                       <Component id="desktopPanel" max="32767" attributes="0"/>
                       <Component id="jPanel2" max="32767" attributes="0"/>
->>>>>>> 43bee69a84fc9dc7860ed30d990062048d8fdf03
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -459,7 +446,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="857" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="851" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
