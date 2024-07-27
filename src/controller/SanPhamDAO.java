@@ -1,12 +1,11 @@
-package repository;
+package controller;
 
 import model.SanPham;
-import controller.SanPhamRepository;
-import controller.SanPhamRepository;
+import controller.SanPhamService;
 
 public class SanPhamDAO {
     
-    SanPhamRepository dao = new SanPhamRepository();
+    SanPhamService dao = new SanPhamService();
     
     public void insert(SanPham sp){
         dao.insert(sp);

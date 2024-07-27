@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.ChatLieu;
 
-public class ChatLieuRepository implements INTFChatLieu {
+public class ChatLieuService implements INTFChatLieu {
 
     String selectAll = "select *from ChatLieu";
     String update = "update ChatLieu set TenChatLieu =? , TrangThai = ? where Ma_ChatLieu =?";

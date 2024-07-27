@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import repository.INTFThuocTinh;
 
-public class ThuocTinhSanPhamRepository implements INTFThuocTinh{
+public class ThuocTinhSanPhamService implements INTFThuocTinh{
 
     @Override
     public int getIDSPbyName(String name) {
@@ -69,7 +69,7 @@ public class ThuocTinhSanPhamRepository implements INTFThuocTinh{
     }
 
     public static void main(String[] args) {
-        ThuocTinhSanPhamRepository th = new ThuocTinhSanPhamRepository();
+        ThuocTinhSanPhamService th = new ThuocTinhSanPhamService();
         System.out.println(th.getIDMauSacbyName("do"));
     }
 

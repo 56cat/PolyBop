@@ -1,6 +1,6 @@
-package repository;
+package controller;
 
-import controller.INTFLoaiSanPham;
+import repository.INTFLoaiSanPham;
 import dao.JDBCHelper;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import model.LoaiSanPham;
 
-public class LoaiSanPhamRepository implements INTFLoaiSanPham {
+public class LoaiSanPhamService implements INTFLoaiSanPham {
 
-    private static final Logger logger = Logger.getLogger(LoaiSanPhamRepository.class.getName());
+    private static final Logger logger = Logger.getLogger(LoaiSanPhamService.class.getName());
 
     String selectAll = "select * from LoaiSanPham";
     String selectID = "select * from LoaiSanPham where Ma_LoaiSanPham= ?";

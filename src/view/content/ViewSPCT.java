@@ -9,22 +9,22 @@ import model.ChatLieu;
 import model.LoaiSanPham;
 import model.MauSac;
 import model.SanPhamCT_ID;
-import controller.ChatLieuRepository;
-import controller.LoaiSanPhamRepository;
-import controller.MauSacRepository;
+import controller.ChatLieuService;
+import controller.LoaiSanPhamService;
+import controller.MauSacService;
 import controller.MsgBox;
-import controller.SanPhamCTRepository;
-import controller.ThuocTinhSanPhamRepository;
+import controller.SanPhamCTService;
+import controller.ThuocTinhSanPhamService;
 import controller.Xdate;
 
 public class ViewSPCT extends javax.swing.JFrame {
 
     DefaultTableModel mol = new DefaultTableModel();
-    SanPhamCTRepository service = new SanPhamCTRepository();
-    MauSacRepository daoms = new MauSacRepository();
-    ChatLieuRepository daocl = new ChatLieuRepository();
-    LoaiSanPhamRepository daolv = new LoaiSanPhamRepository();
-    ThuocTinhSanPhamRepository serviceTT = new ThuocTinhSanPhamRepository();
+    SanPhamCTService service = new SanPhamCTService();
+    MauSacService daoms = new MauSacService();
+    ChatLieuService daocl = new ChatLieuService();
+    LoaiSanPhamService daolv = new LoaiSanPhamService();
+    ThuocTinhSanPhamService serviceTT = new ThuocTinhSanPhamService();
 
     List<MauSac> listMauSac;
     List<ChatLieu> listChatLieu;

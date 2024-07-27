@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.ThuongHieu;
 
-public class ThuongHieuRepository implements INTFThuongHieu {
+public class ThuongHieuService implements INTFThuongHieu {
 
     String selectAll = "select *from ThuongHieu";
     String update = "update ThuongHieu set TenThuongHieu =? , TrangThai = ? where Ma_ThuongHieu =?";

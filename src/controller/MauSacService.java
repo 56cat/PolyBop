@@ -7,7 +7,7 @@ import repository.INTFMauSac;
 import dao.JDBCHelper;
 import model.MauSac;
 
-public class MauSacRepository implements INTFMauSac {
+public class MauSacService implements INTFMauSac {
 
     String selectAll = "select * from MauSac";
     String selectID = "select * from MauSac where Ma_MauSac= ?";

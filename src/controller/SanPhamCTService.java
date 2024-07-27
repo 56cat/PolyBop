@@ -12,7 +12,7 @@ import java.util.List;
 import model.SanPhamCT_ID;
 import model.SanPhamCT_Ten;
 
-public class SanPhamCTRepository implements INTFSanPhamCT {
+public class SanPhamCTService implements INTFSanPhamCT {
 
     String update = "Update ChiTietSanPham set ID_MauSac=?, ID_ChatLieu=?, KhoaSanPham=?, SoLuong = ?,GiaNhap = ?, GiaBan = ?, NgayNhap = ? where Ma_ChiTietSanPham = ?";
 

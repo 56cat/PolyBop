@@ -14,19 +14,20 @@ import javax.swing.table.TableRowSorter;
 import model.LoaiSanPham;
 import model.SanPham;
 import model.ThuongHieu;
-import repository.LoaiSanPhamRepository;
-import repository.MsgBox;
-import repository.SanPhamDAO;
-import repository.SanPhamRepository;
-import repository.ThuongHieuRepository;
-import repository.Ximages;
+import controller.LoaiSanPhamService;
+import controller.MsgBox;
+import controller.SanPhamDAO;
+import controller.SanPhamService;
+import controller.ThuongHieuService;
+import controller.Ximages;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class SanPhamView extends javax.swing.JInternalFrame {
 
     Locale vn = new Locale("vi", "VN");
-    SanPhamRepository dao_vi = new SanPhamRepository();
-    ThuongHieuRepository dao_th = new ThuongHieuRepository();
-    LoaiSanPhamRepository dao_lsp = new LoaiSanPhamRepository();
+    SanPhamService dao_vi = new SanPhamService();
+    ThuongHieuService dao_th = new ThuongHieuService();
+    LoaiSanPhamService dao_lsp = new LoaiSanPhamService();
     int row = -1;
     DefaultTableModel modelCH = new DefaultTableModel();
     DefaultTableModel modelHH = new DefaultTableModel();
@@ -36,6 +37,9 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     public SanPhamView() {
         initComponents();
         init();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        ui.setNorthPane(null);
         modelCH = (DefaultTableModel) tblConhang.getModel();
         modelHH = (DefaultTableModel) tblHetHang.getModel();
         filltotablech();
@@ -51,6 +55,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblHinh = new javax.swing.JLabel();
@@ -142,6 +147,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Trạng Thái");
 
+        buttonGroup1.add(rdo);
         rdo.setText("Hết Hàng");
         rdo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +155,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(rdo1);
         rdo1.setSelected(true);
         rdo1.setText("Còn Hàng");
         rdo1.addActionListener(new java.awt.event.ActionListener() {
@@ -679,6 +686,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThem1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxLoaiSanPham;
     private javax.swing.JComboBox<String> cbxThuongHieu;
     private javax.swing.JButton jButton1;
@@ -783,17 +791,6 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     }
 
     private SanPham getInformation() {
-//        SanPham sp = new SanPham();
-//        sp.setMaSanPham(txtMaVi.getText());
-//        sp.setTenSanPham(txtTenVi.getText());
-//        sp.setKieuDang(txtKieuDang.getText());
-//        sp.setIdThuongHieu(dao_th.selectIdByName(cbxThuongHieu.getSelectedItem() + ""));
-//        sp.setIdLoaiSanPham(dao_th.selectIdByName(cbxLoaiSanPham.getSelectedItem() + ""));
-//        sp.setTrangThai(rdo1.isSelected());
-//        sp.setUrl_Anh(lblHinh.getToolTipText());
-//        System.out.println(sp.getTenSanPham());
-//        System.out.println(sp.getUrl_Anh());
-//        return sp;
         SanPham sp = new SanPham();
         sp.setMaSanPham(txtMaVi.getText());
         sp.setTenSanPham(txtTenVi.getText());
@@ -814,19 +811,6 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     }
 
     private void setForm(SanPham sp) {
-//        String thuonghieu = tblConhang.getValueAt(row, 2).toString();
-//        for (int i = 0; i < list_TH.size(); i++) {
-//            if (thuonghieu.equals(list_TH.get(i).getTenThuongHieu())) {
-//                cbxThuongHieu.setSelectedIndex(i);
-//            }
-//        }
-//        String loaisanpham = tblConhang.getValueAt(row, 3).toString();
-//        for (int i = 0; i < list_LSP.size(); i++) {
-//            if (loaisanpham.equals(list_LSP.get(i).getTenLoaiSanPham())) {
-//                cbxLoaiSanPham.setSelectedIndex(i);
-//            }
-//        }
-
         Object thuonghieuObj = tblConhang.getValueAt(row, 2);
         String thuonghieu = (thuonghieuObj != null) ? thuonghieuObj.toString() : "";
 
@@ -847,19 +831,6 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     }
 
     private void setForm1(SanPham sp) {
-//        String thuonghieu = tblHetHang.getValueAt(row, 2).toString();
-//        for (int i = 0; i < list_TH.size(); i++) {
-//            if (thuonghieu.equals(list_TH.get(i).getTenThuongHieu())) {
-//                cbxThuongHieu.setSelectedIndex(i);
-//            }
-//        }
-//        String loaisanpham = tblConhang.getValueAt(row, 3).toString();
-//        for (int i = 0; i < list_LSP.size(); i++) {
-//            if (loaisanpham.equals(list_LSP.get(i).getTenLoaiSanPham())) {
-//                cbxLoaiSanPham.setSelectedIndex(i);
-//            }
-//        }
-
         Object thuonghieuObj = tblHetHang.getValueAt(row, 2);
         String thuonghieu = (thuonghieuObj != null) ? thuonghieuObj.toString() : "";
 
