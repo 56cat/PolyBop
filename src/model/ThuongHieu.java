@@ -1,19 +1,28 @@
 package model;
 
 public class ThuongHieu {
+
     private int idThuongHieu;
     private String Ma_ThuongHieu;
-    private String tenThuongHieu;
+    private String ten_ThuongHieu;
     private boolean trangThai;
 
     public ThuongHieu() {
     }
 
-    public ThuongHieu(int idThuongHieu, String Ma_ThuongHieu, String tenThuongHieu, boolean trangThai) {
+    public ThuongHieu(int idThuongHieu, String Ma_ThuongHieu, String ten_ThuongHieu, boolean trangThai) {
         this.idThuongHieu = idThuongHieu;
         this.Ma_ThuongHieu = Ma_ThuongHieu;
-        this.tenThuongHieu = tenThuongHieu;
+        this.ten_ThuongHieu = ten_ThuongHieu;
         this.trangThai = trangThai;
+    }
+
+    public int getIdThuongHieu() {
+        return idThuongHieu;
+    }
+
+    public void setIdThuongHieu(int idThuongHieu) {
+        this.idThuongHieu = idThuongHieu;
     }
 
     public String getMa_ThuongHieu() {
@@ -24,21 +33,12 @@ public class ThuongHieu {
         this.Ma_ThuongHieu = Ma_ThuongHieu;
     }
 
-
-    public int getIdThuongHieu() {
-        return idThuongHieu;
+    public String getTen_ThuongHieu() {
+        return ten_ThuongHieu;
     }
 
-    public void setIdThuongHieu(int idThuongHieu) {
-        this.idThuongHieu = idThuongHieu;
-    }
-
-    public String getTenThuongHieu() {
-        return tenThuongHieu;
-    }
-
-    public void setTenThuongHieu(String tenThuongHieu) {
-        this.tenThuongHieu = tenThuongHieu;
+    public void setTen_ThuongHieu(String ten_ThuongHieu) {
+        this.ten_ThuongHieu = ten_ThuongHieu;
     }
 
     public boolean isTrangThai() {

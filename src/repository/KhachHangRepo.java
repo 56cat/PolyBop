@@ -1,6 +1,6 @@
 package repository;
 
-import dao.DBConnect;
+import dao.DBconnect;
 import model.KhachHang;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +21,7 @@ public class KhachHangRepo {
     private Connection conn;
 
     public KhachHangRepo() {
-        this.conn = DBConnect.getConnection();
+        this.conn = DBconnect.getConnection();
     }
 
     public ArrayList<KhachHang> findAll() {

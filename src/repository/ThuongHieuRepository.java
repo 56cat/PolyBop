@@ -17,13 +17,13 @@ public class ThuongHieuRepository implements INTFThuongHieu {
 
     @Override
     public void insert(ThuongHieu sp) {
-        JDBCHelper.update(insert, sp.getMa_ThuongHieu(), sp.getTenThuongHieu(), sp.isTrangThai());
+        JDBCHelper.update(insert, sp.getMa_ThuongHieu(), sp.getTen_ThuongHieu(), sp.isTrangThai());
     }
 
     @Override
     public void update(ThuongHieu sp) {
 
-        JDBCHelper.update(update, sp.getTenThuongHieu(), sp.isTrangThai(), sp.getMa_ThuongHieu());
+        JDBCHelper.update(update, sp.getTen_ThuongHieu(), sp.isTrangThai(), sp.getMa_ThuongHieu());
     }
 
     @Override
@@ -49,9 +49,9 @@ public class ThuongHieuRepository implements INTFThuongHieu {
             ResultSet rs = JDBCHelper.query(sql, args);
             while (rs.next()) {
                 ThuongHieu th = new ThuongHieu();
-                th.setIdThuongHieu(rs.getInt("idThuongHieu"));
+                th.setIdThuongHieu(rs.getInt("IDThuongHieu"));
                 th.setMa_ThuongHieu(rs.getString("Ma_ThuongHieu"));
-                th.setTenThuongHieu(rs.getString("tenThuongHieu"));
+                th.setTen_ThuongHieu(rs.getString("TenThuongHieu"));
                 th.setTrangThai(rs.getBoolean("trangThai"));
                 list_th.add(th);
             }
@@ -67,33 +67,11 @@ public class ThuongHieuRepository implements INTFThuongHieu {
         if (list.isEmpty()) {
             throw new RuntimeException("Không tìm thấy thương hiệu với ID: " + id);
         }
-        return list.get(0).getTenThuongHieu();
+        return list.get(0).getTen_ThuongHieu();
 
     }
 
-//    public int selectIdByName(String name) {
-//        String sql = "select * from ThuongHieu where TenThuongHieu =?";
-//        return selectBySQL(sql, name).get(0).getIdThuongHieu();
-//    }
-//    public int selectIdByName(String name) {
-//    String sql = "select * from ThuongHieu where TenThuongHieu =?";
-//    List<ThuongHieu> list = selectBySQL(sql, name);
-//    if (list.isEmpty()) {
-//        // Xử lý khi không tìm thấy thương hiệu với tên tương ứng
-//        System.out.println("No element found with name: " + name);
-//        return -1; // Hoặc giá trị mặc định khác
-//    }
-//    return list.get(0).getIdThuongHieu();
-//}
     public int selectIdByName(String name) {
-//      String sql = "SELECT * FROM ThuongHieu WHERE TenThuongHieu = ?";
-//        List<ThuongHieu> list = selectBySQL(sql, name);
-//        if (list.isEmpty()) {
-//            // Xử lý khi không tìm thấy thương hiệu với tên tương ứng
-//            System.out.println("Không tìm thấy thương hiệu với tên: " + name);
-//            return -1; // Hoặc giá trị mặc định khác
-//        }
-//        return list.get(0).getIdThuongHieu();
         String sql = "SELECT * FROM ThuongHieu WHERE TenThuongHieu = ?";
         List<ThuongHieu> list = selectBySQL(sql, name);
         if (list.isEmpty()) {
