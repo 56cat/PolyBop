@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Bravo15
  */
 public class DBConnect {
-    public static String URL = "jdbc:sqlserver://localhost\\BISNH\\SQLEXPRESS:1433;databaseName=PoLyBop;encrypt=true;trustServerCertificate=true;";
+    public static String URL = "jdbc:sqlserver://localhost\\BINH\\SQLEXPRESS:1433;databaseName=PoLyBop;encrypt=true;trustServerCertificate=true;";
     public static String USERNAME = "sa";
     public static String PASS = "123";
 

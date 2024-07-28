@@ -4,7 +4,7 @@
  */
 package view.content;
 
-import controller.NhanVienServiceImpl;
+//import controller.NhanVienServiceImpl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,12 +25,12 @@ public class NhanVienView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel dtm = new DefaultTableModel();
     private List<NhanVien> lists = new ArrayList<>();
-    private NhanVienServiceImpl nvRepo = new NhanVienServiceImpl();
+//    private NhanVienServiceImpl nvRepo = new NhanVienServiceImpl();
 
     public NhanVienView() {
         initComponents();
         dtm = (DefaultTableModel) tbNhanVien.getModel();
-        lists = nvRepo.getAll();
+//        lists = nvRepo.getAll();
         txtID.setEnabled(false);
         loadDataTable(lists);
     }
@@ -783,8 +783,8 @@ public class NhanVienView extends javax.swing.JInternalFrame {
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
         String ten = txtTimTen.getText();
         lists.clear();
-        List<NhanVien> searchResults = nvRepo.tim(ten); // Lấy kết quả tìm kiếm từ phương thức tim
-        lists.addAll(searchResults); // Thêm kết quả vào lists
+//        List<NhanVien> searchResults = nvRepo.tim(ten); // Lấy kết quả tìm kiếm từ phương thức tim
+//        lists.addAll(searchResults); // Thêm kết quả vào lists
         loadDataTable(lists); // Tải lại bảng dữ liệu với lists
     }//GEN-LAST:event_btSearchActionPerformed
 
@@ -806,12 +806,12 @@ public class NhanVienView extends javax.swing.JInternalFrame {
         String idStr = this.tbNhanVien.getValueAt(viTri, 0).toString();
         int id = Integer.parseInt(idStr);
         try {
-            this.nvRepo.xoa(id);
+//            this.nvRepo.xoa(id);
         } catch (Exception ex) {
             Logger.getLogger(NhanVienView.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(this, "Xóa thành công");
-        lists = nvRepo.getAll();
+//        lists = nvRepo.getAll();
         loadDataTable(lists);
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -828,9 +828,9 @@ public class NhanVienView extends javax.swing.JInternalFrame {
                     int idToEdit = (int) tbNhanVien.getValueAt(selectedRow, 0);
                     NhanVien updatedNhanVien = validatesua();
                     if (updatedNhanVien != null) {
-                        nvRepo.sua(updatedNhanVien, idToEdit);
+//                        nvRepo.sua(updatedNhanVien, idToEdit);
                         JOptionPane.showMessageDialog(this, "Sửa thông tin thành công");
-                        lists = nvRepo.getAll();
+//                        lists = nvRepo.getAll();
                         loadDataTable(lists);
                     }
                 } else {
@@ -854,7 +854,7 @@ public class NhanVienView extends javax.swing.JInternalFrame {
             NhanVien nv = getFormData();
             if (nv != null) {
                 try {
-                    nvRepo.them(nv); // Thêm nhân viên vào cơ sở dữ liệu
+//                    nvRepo.them(nv); // Thêm nhân viên vào cơ sở dữ liệu
                     JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công");
                     lists.add(nv); // Thêm nhân viên mới vào danh sách hiện tại
                     loadDataTable(lists); // Cập nhật bảng hiển thị
@@ -871,7 +871,7 @@ public class NhanVienView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btThemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        lists = nvRepo.getAll(); // Lấy tất cả nhân viên từ cơ sở dữ liệu
+//        lists = nvRepo.getAll(); // Lấy tất cả nhân viên từ cơ sở dữ liệu
         loadDataTable(lists);
     }//GEN-LAST:event_jButton1ActionPerformed
 
