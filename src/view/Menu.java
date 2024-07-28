@@ -10,7 +10,7 @@ import view.content.BanHangView;
 import view.content.HoaDonView;
 import view.content.KhachHangView;
 import view.content.KhuyenMaiView;
-import view.content.NhanVienView;
+//import view.content.NhanVienView;
 import view.content.TrangChuView;
 
 /**
@@ -463,9 +463,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menu3MouseClicked
 
     private void menu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu5MouseClicked
-        NhanVienView nhanVienView = new NhanVienView();
+//        NhanVienView nhanVienView = new NhanVienView();
         desktopPanel.removeAll();
-        desktopPanel.add(nhanVienView).setVisible(true);
+//        desktopPanel.add(nhanVienView).setVisible(true);
     }//GEN-LAST:event_menu5MouseClicked
 
     private void menu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu6MouseClicked

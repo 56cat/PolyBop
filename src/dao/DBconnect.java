@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Bravo15
  */
-public class DBConnect {
+public class DBconnect {
     public static String URL = "jdbc:sqlserver://localhost\\BINH\\SQLEXPRESS:1433;databaseName=PoLyBop;encrypt=true;trustServerCertificate=true;";
     public static String USERNAME = "sa";
     public static String PASS = "123";
@@ -23,7 +23,7 @@ public class DBConnect {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -32,7 +32,7 @@ public class DBConnect {
         try {
             cn = DriverManager.getConnection(URL, USERNAME, PASS);
         } catch (SQLException ex) {
-            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cn;
     }

@@ -23,7 +23,7 @@ import model.KhuyenMai;
  *
  * @author Admin
  */
-import dao.DBConnect;
+import dao.DBconnect;
 public class KhuyenMaiView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel tableModel = new DefaultTableModel();
@@ -86,7 +86,7 @@ public class KhuyenMaiView extends javax.swing.JInternalFrame {
 
     private boolean isMaStringDuplicate(String maKhuyenMai) {
         String sql = "SELECT COUNT(*) FROM KhuyenMai WHERE Ma_KhuyenMai = ?";
-        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, maKhuyenMai);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {

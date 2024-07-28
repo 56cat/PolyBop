@@ -5,7 +5,7 @@
 package controller;
 
 import model.KhuyenMai;
-import dao.DBConnect;
+import dao.DBconnect;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
@@ -27,7 +27,7 @@ public class KhuyenMaiService implements InterfaceKhuyenMai {
                 + "       ,[TrangThai]\n"
                 + "  FROM [dbo].[KhuyenMai]where TrangThai = 1";
         List<KhuyenMai> listKM = new ArrayList<>();
-        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareCall(sql);) {
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareCall(sql);) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhuyenMai km = new KhuyenMai(
@@ -48,7 +48,7 @@ public class KhuyenMaiService implements InterfaceKhuyenMai {
 public List<KhuyenMai> getAll(){
     String sql = "SELECT IDKhuyenMai, Ma_KhuyenMai, GiaTri, NgayBatDau, NgayKetThuc, TrangThai FROM KhuyenMai WHERE TrangThai = 1";
     List<KhuyenMai> listKM = new ArrayList<>();
-    try (Connection con = DBConnect.getConnection();
+    try (Connection con = DBconnect.getConnection();
          PreparedStatement ps = con.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
          
@@ -71,7 +71,7 @@ public List<KhuyenMai> getAll(){
     public int deleteKM(String ma) {
         String sql = "Update KhuyenMai set TrangThai = 0 where Ma_KhuyenMai like ?";
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ma);
             return ps.executeUpdate();
@@ -85,7 +85,7 @@ public List<KhuyenMai> getAll(){
         String sql = "INSERT INTO KhuyenMai(Ma_KhuyenMai, GiaTri, NgayBatDau, NgayKetThuc, TrangThai) VALUES( ?, ?, ?, ?, ?)";
         int kq = 0;
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement ps = con.prepareCall(sql);
             ps.setString(1, km.getMa());
             ps.setInt(2, km.getGiaTri());
@@ -107,7 +107,7 @@ public List<KhuyenMai> getAll(){
     public int updateKM(String ma, KhuyenMai km) {
         String sql = "UPDATE KhuyenMai set GiaTri= ?, NgayBatDau = ?, NgayKetThuc = ?, TrangThai = ? WHERE Ma_KhuyenMai = ?";
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, km.getGiaTri());
             ps.setDate(2, new java.sql.Date(km.getNgayBatDau().getTime()));
@@ -123,7 +123,7 @@ public List<KhuyenMai> getAll(){
 
     public List<KhuyenMai> locTT(String trangThai) {
         List<KhuyenMai> ListNV = new ArrayList<>();
-        Connection con = DBConnect.getConnection();
+        Connection con = DBconnect.getConnection();
         String sql = "SELECT IDKhuyenMai, Ma_KhuyenMai, GiaTri, NgayBatDau, NgayKetThuc, TrangThai  FROM KhuyenMai WHERE TrangThai LIKE ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -151,7 +151,7 @@ public List<KhuyenMai> getAll(){
         String sql = "SELECT IDKhuyenMai, Ma_KhuyenMai, GiaTri, NgayBatDau, NgayKetThuc, TrangThai  FROM KhuyenMai WHERE Ma_KhuyenMai LIKE ?";
         List<KhuyenMai> listKM = new ArrayList<>();
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + ma + "%");
             ResultSet rs = ps.executeQuery();
