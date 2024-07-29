@@ -7,9 +7,9 @@ public class DBconnect {
     
     public static final String HOSTNAME = "localhost";
     public static final String PORT = "1433";
-    public static final String DBNAME = "PoLyBop_01";
+    public static final String DBNAME = "PoLyBop";
     public static final String USERNAME = "sa";
-    public static final String PASSWORD = "123456";
+    public static final String PASSWORD = "123";
 
     public static Connection getConnection() {
         String url = "jdbc:sqlserver://" + HOSTNAME + ":" + PORT + ";" + "databaseName=" + DBNAME;
