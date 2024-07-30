@@ -2,6 +2,7 @@ package controller;
 
 import repository.INTFSanPhamCT;
 import dao.DBconnect;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +33,8 @@ public class SanPhamCTService implements INTFSanPhamCT {
         try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareCall(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SanPhamCT_Ten sp = new SanPhamCT_Ten(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getDouble(7));
+//                SanPhamCT_Ten sp = new SanPhamCT_Ten(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getDouble(7));
+                  SanPhamCT_Ten sp = new SanPhamCT_Ten(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getBigDecimal(7));
                 list.add(sp);
             }
         } catch (Exception e) {
@@ -57,7 +59,8 @@ public class SanPhamCTService implements INTFSanPhamCT {
         try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareCall(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SanPhamCT_Ten sp = new SanPhamCT_Ten(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getDouble(7));
+//                SanPhamCT_Ten sp = new SanPhamCT_Ten(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getDouble(7));
+                  SanPhamCT_Ten sp = new SanPhamCT_Ten(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getBigDecimal(7));
                 list.add(sp);
             }
         } catch (Exception e) {
@@ -158,8 +161,10 @@ public class SanPhamCTService implements INTFSanPhamCT {
                         rs.getString(3), // TenChatLieu
                         rs.getString(4), // KhoaSanPham
                         rs.getInt(5), // SoLuong
-                        rs.getDouble(6), // GiaNhap
-                        rs.getDouble(7), // GiaBan
+//                        rs.getDouble(6), // GiaNhap
+                        rs.getBigDecimal(6),
+//                        rs.getDouble(7), // GiaBan
+                        rs.getBigDecimal(7),
                         ngayNhapStr // NgayNhap
                 );
                 list.add(spct);
@@ -219,7 +224,7 @@ public class SanPhamCTService implements INTFSanPhamCT {
     }
 
     @Override
-    public void updateCTSP(int idSP, int idMauSac, int idChatLieu, String maCTSP, String khoaSanPham, int soLuong, double giaNhap, double giaBan, String ngayNhap) {
+    public void updateCTSP(int idSP, int idMauSac, int idChatLieu, String maCTSP, String khoaSanPham, int soLuong, BigDecimal giaNhap, BigDecimal giaBan, String ngayNhap) {
         String sql = "UPDATE [dbo].[ChiTietSanPham]\n"
                 + "   SET [ID_MauSac] = " + idMauSac + " \n"
                 + "      ,[ID_ChatLieu] = " + idChatLieu + " \n"

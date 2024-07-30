@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class JDBCHelper {
 
     static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=PoLyBop_01";
+    static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=PoLyBop";
     static String user = "sa";
     static String password = "123456";
 

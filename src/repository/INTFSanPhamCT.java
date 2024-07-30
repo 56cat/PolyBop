@@ -1,5 +1,6 @@
 package repository;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import model.SanPhamCT_ID;
@@ -36,6 +37,7 @@ public interface INTFSanPhamCT {
     void addCTSP(int idSP, int idMauSac, int idChatLieu, String maCTSP, String khoaSanPham, int soLuong, double giaNhap, double giaBan, String ngayNhap);
 
     // update chi tiết sản phẩm 
-    void updateCTSP(int idSP, int idMauSac, int idChatLieu, String maCTSP, String khoaSanPham, int soLuong, double giaNhap, double giaBan, String ngayNhap);
+//    void updateCTSP(int idSP, int idMauSac, int idChatLieu, String maCTSP, String khoaSanPham, int soLuong, double giaNhap, double giaBan, String ngayNhap);
+        void updateCTSP(int idSP, int idMauSac, int idChatLieu, String maCTSP, String khoaSanPham, int soLuong, BigDecimal giaNhap, BigDecimal giaBan, String ngayNhap);
 
 }

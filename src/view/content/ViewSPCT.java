@@ -16,6 +16,7 @@ import controller.MsgBox;
 import controller.SanPhamCTService;
 import controller.ThuocTinhSanPhamService;
 import controller.Xdate;
+import java.math.BigDecimal;
 
 public class ViewSPCT extends javax.swing.JFrame {
 
@@ -28,7 +29,6 @@ public class ViewSPCT extends javax.swing.JFrame {
 
     List<MauSac> listMauSac;
     List<ChatLieu> listChatLieu;
-    List<LoaiSanPham> listLoaiVi;
     List<SanPhamCT_ID> listSPCT;
     String maVi;
 
@@ -43,7 +43,7 @@ public class ViewSPCT extends javax.swing.JFrame {
 
         // Kiểm tra sản phẩm đã có thông tin chi tiết chưa 
         if (service.getSoLuongSPCT(maVi) <= 0) {
-            //System.out.println("Sản phẩm chưa có thông tin chi tiết");
+            System.out.println("Sản phẩm chưa có thông tin chi tiết");
         }
     }
 
@@ -57,7 +57,6 @@ public class ViewSPCT extends javax.swing.JFrame {
     private void init() {
         fillcomboboxMauSac();
         fillcomboboxChatLieu();
-//        fillcomboboxLoaiSanPham();
     }
 
     @SuppressWarnings("unchecked")
@@ -416,19 +415,7 @@ public class ViewSPCT extends javax.swing.JFrame {
     private void tbl_SanPhamCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_SanPhamCTMouseClicked
         // Click hiện thông tin chi tiết sản phẩm lên form
         // Sản phẩm đã có thông tin chi tiết
-        int index = tbl_SanPhamCT.getSelectedRow();
-        SanPhamCT_ID sanPhamCT = service.getDaTaSPCT(maVi).get(index);
-        txt_MaCTVi.setText(sanPhamCT.getMaCTSP());
-        txt_KhoaVi.setText(sanPhamCT.getKhoaSanPham());
-        txt_SoLuong.setText(String.valueOf(sanPhamCT.getSoLuongSP()));
-        txt_NgayNhap.setDate(Xdate.toDate(sanPhamCT.getNgayNhap(), "yyyy-MM-dd"));
-        txt_giaBan.setText(String.valueOf(sanPhamCT.getGiaBanSP()));
-        txt_giaNhap.setText(String.valueOf(sanPhamCT.getGiaNhapSP()));
-//        cbo_loaiVi.setSelectedItem(sanPhamCT.getTenLoaiSanPham());
-        cbo_mauSac.setSelectedItem(sanPhamCT.getTen_MauSac());
-        cbo_chatLieu.setSelectedItem(sanPhamCT.getTen_ChatLieu());
-
-        //        txt_MaCTVi.setEnabled(false);
+        this.clickTable();
     }//GEN-LAST:event_tbl_SanPhamCTMouseClicked
 
     private void lammoi() {
@@ -519,10 +506,26 @@ public class ViewSPCT extends javax.swing.JFrame {
                 x.getKhoaSanPham(),
                 x.getSoLuongSP(),
                 x.getGiaNhapSP(),
-                x.getGiaBanSP(),
+                x.getGiabanSP(),
                 x.getNgayNhap()
             });
         }
+    }
+
+    private void clickTable() {
+        int index = tbl_SanPhamCT.getSelectedRow();
+        SanPhamCT_ID sanPhamCT = service.getDaTaSPCT(maVi).get(index);
+        txt_MaCTVi.setText(sanPhamCT.getMaCTSP());
+        txt_KhoaVi.setText(sanPhamCT.getKhoaSanPham());
+        txt_SoLuong.setText(String.valueOf(sanPhamCT.getSoLuongSP()));
+        txt_NgayNhap.setDate(Xdate.toDate(sanPhamCT.getNgayNhap(), "yyyy-MM-dd"));
+//        txt_giaBan.setText(String.valueOf(sanPhamCT.getGiaBanSP()));
+//        txt_giaNhap.setText(String.valueOf(sanPhamCT.getGiaNhapSP()));
+        txt_giaBan.setText(sanPhamCT.getGiabanSP().toString());
+        txt_giaNhap.setText(sanPhamCT.getGiaNhapSP().toString());
+        cbo_mauSac.setSelectedItem(sanPhamCT.getTen_MauSac());
+        cbo_chatLieu.setSelectedItem(sanPhamCT.getTen_ChatLieu());
+        txt_MaCTVi.setEnabled(false);
     }
 
     private void fillcomboboxMauSac() {
@@ -542,15 +545,6 @@ public class ViewSPCT extends javax.swing.JFrame {
             modelChat.addElement(x.getTen_ChatLieu());
         }
     }
-
-//    private void fillcomboboxLoaiSanPham() {
-//        DefaultComboBoxModel modelChat = (DefaultComboBoxModel) cbo_loaiVi.getModel();
-//        modelChat.removeAllElements();
-//        listLoaiVi = daolv.selectAll();
-//        for (LoaiSanPham lv : listLoaiVi) {
-//            modelChat.addElement(lv.getTenLoaiSanPham());
-//        }
-//    }
 
     private boolean vadidateNull() {
         List<SanPhamCT_ID> list = service.getDaTaSPCT(maVi);
@@ -602,6 +596,24 @@ public class ViewSPCT extends javax.swing.JFrame {
 //return true;
     }
 
+    // Check giới hạn giá trị hiển thị
+    private boolean validateGiaTri(BigDecimal giaNhap, BigDecimal giaBan) {
+        int maxPrecision = 10;
+        int maxScale = 2;
+
+        if (giaNhap.precision() - giaNhap.scale() > maxPrecision - maxScale || giaNhap.scale() > maxScale) {
+            JOptionPane.showMessageDialog(this, "Giá trị giá nhập vượt quá giới hạn cho phép");
+            return false;
+        }
+
+        if (giaBan.precision() - giaBan.scale() > maxPrecision - maxScale || giaBan.scale() > maxScale) {
+            JOptionPane.showMessageDialog(this, "Giá trị giá bán vượt quá giới hạn cho phép");
+            return false;
+        }
+
+        return true;
+    }
+
     // Check trùng sản phẩm 
     private boolean VadidateTrungCTSP() {
         try {
@@ -610,22 +622,27 @@ public class ViewSPCT extends javax.swing.JFrame {
             String khoaVi = txt_KhoaVi.getText();
             String MauSac = (String) cbo_mauSac.getSelectedItem();
             String ChatLieu = (String) cbo_chatLieu.getSelectedItem();
-//            String LoaiVi = (String) cbo_loaiVi.getSelectedItem();
             int soLuong = Integer.parseInt(txt_SoLuong.getText());
             String ngayNhap = dateFormat.format(txt_NgayNhap.getDate());
-            Double giaNhap = Double.valueOf(txt_giaNhap.getText());
-            Double giaBan = Double.valueOf(txt_giaBan.getText());
+//        Double giaNhap = Double.valueOf(txt_giaNhap.getText());
+//        Double giaBan = Double.valueOf(txt_giaBan.getText());
+            BigDecimal giaNhap = new BigDecimal(txt_giaNhap.getText());
+            BigDecimal giaBan = new BigDecimal(txt_giaBan.getText());
+
+            // Kiểm tra giá trị giaNhap và giaBan
+            if (!validateGiaTri(giaNhap, giaBan)) {
+                return false;
+            }
+
             for (SanPhamCT_ID x : service.getDaTaSPCT(maVi)) {
                 if (maCTSP.equalsIgnoreCase(x.getMaCTSP())
-                        & khoaVi.equalsIgnoreCase(x.getKhoaSanPham())
-                        & soLuong == x.getSoLuongSP()
-                        & ngayNhap.equalsIgnoreCase(x.getNgayNhap())
-                        & giaNhap == x.getGiaNhapSP()
-                        & giaBan == x.getGiaBanSP()
-                        & MauSac.equalsIgnoreCase(x.getTen_MauSac())
-                        & ChatLieu.equalsIgnoreCase(x.getTen_ChatLieu()))
-//                        & LoaiVi.equalsIgnoreCase(x.getTenLoaiSanPham())) {
-                        {
+                        && khoaVi.equalsIgnoreCase(x.getKhoaSanPham())
+                        && soLuong == x.getSoLuongSP()
+                        && ngayNhap.equalsIgnoreCase(x.getNgayNhap())
+                        && giaNhap.compareTo(x.getGiaNhapSP()) == 0
+                        && giaBan.compareTo(x.getGiabanSP()) == 0
+                        && MauSac.equalsIgnoreCase(x.getTen_MauSac())
+                        && ChatLieu.equalsIgnoreCase(x.getTen_ChatLieu())) {
                     JOptionPane.showMessageDialog(this, "Chi tiết sản phẩm đã tồn tại");
                     return false;
                 }
@@ -669,19 +686,25 @@ public class ViewSPCT extends javax.swing.JFrame {
     private void update() {
         int idSP, idMauSac, idChatLieu, idXuatXu, idLoaiVi, soLuong;
         String maCTSP, khoaVi, soNganDungThe, ngayNhap;
-        double giaBan, giaNhap;
+        BigDecimal giaBan, giaNhap;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         idSP = serviceTT.getIDSPbyName(txt_tenSP.getText());
         idMauSac = serviceTT.getIDMauSacbyName((String) cbo_mauSac.getSelectedItem());
         idChatLieu = serviceTT.getIDChatLieubyName((String) cbo_chatLieu.getSelectedItem());
-//        idLoaiVi = serviceTT.getIDLoaiSanPhambyName((String) cbo_loaiVi.getSelectedItem());
+//    idLoaiVi = serviceTT.getIDLoaiSanPhambyName((String) cbo_loaiVi.getSelectedItem());
         maCTSP = txt_MaCTVi.getText();
         khoaVi = txt_KhoaVi.getText();
         ngayNhap = dateFormat.format(txt_NgayNhap.getDate());
         soLuong = Integer.valueOf(txt_SoLuong.getText());
-        giaNhap = Double.valueOf(txt_giaNhap.getText());
-        giaBan = Double.valueOf(txt_giaBan.getText());
+        giaNhap = new BigDecimal(txt_giaNhap.getText());
+        giaBan = new BigDecimal(txt_giaBan.getText());
+
         try {
+            // Kiểm tra giá trị giaNhap và giaBan
+            if (!validateGiaTri(giaNhap, giaBan)) {
+                return;
+            }
+
             if (MsgBox.confirm(this, "Bạn có muốn sửa sản phẩm ?")) {
                 service.updateCTSP(idSP, idMauSac, idChatLieu, maCTSP, ngayNhap, soLuong, giaNhap, giaBan, ngayNhap);
                 this.fillTable(service.getDaTaSPCT(maVi));
@@ -697,8 +720,10 @@ public class ViewSPCT extends javax.swing.JFrame {
     private SanPhamCT_ID getInformation() {
         SanPhamCT_ID sp = new SanPhamCT_ID();
         sp.setMaCTSP(txt_MaCTVi.getText());
-        sp.setGiaBanSP(Double.parseDouble(txt_giaBan.getText()));
-        sp.setGiaNhapSP(Double.parseDouble(txt_giaNhap.getText()));
+//        sp.setGiaBanSP(Double.parseDouble(txt_giaBan.getText()));
+//        sp.setGiaNhapSP(Double.parseDouble(txt_giaNhap.getText()));
+        sp.setGiabanSP(new BigDecimal(txt_giaBan.getText()));
+        sp.setGiaNhapSP(new BigDecimal(txt_giaNhap.getText()));
         sp.setSoLuongSP(Integer.parseInt(txt_SoLuong.getText()));
         sp.setKhoaSanPham(txt_KhoaVi.getText());
         sp.setNgayNhap(txt_NgayNhap.getDateFormatString());

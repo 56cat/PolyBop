@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class SanPhamCT_Ten {
 
     private String maSanPham;
@@ -8,12 +10,22 @@ public class SanPhamCT_Ten {
     private String thuongHieu;
     private String mauSac;
     private int soLuong;
-    private double giaBan;
-
+//    private double giaBan;
+    private BigDecimal giaBan;
     public SanPhamCT_Ten() {
     }
 
-    public SanPhamCT_Ten(String maSanPham, String tenSanPham, String kieuDang, String thuongHieu, String mauSac, int soLuong, double giaBan) {
+//    public SanPhamCT_Ten(String maSanPham, String tenSanPham, String kieuDang, String thuongHieu, String mauSac, int soLuong, double giaBan) {
+//        this.maSanPham = maSanPham;
+//        this.tenSanPham = tenSanPham;
+//        this.kieuDang = kieuDang;
+//        this.thuongHieu = thuongHieu;
+//        this.mauSac = mauSac;
+//        this.soLuong = soLuong;
+//        this.giaBan = giaBan;
+//    }
+
+    public SanPhamCT_Ten(String maSanPham, String tenSanPham, String kieuDang, String thuongHieu, String mauSac, int soLuong, BigDecimal giaBan) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.kieuDang = kieuDang;
@@ -22,6 +34,7 @@ public class SanPhamCT_Ten {
         this.soLuong = soLuong;
         this.giaBan = giaBan;
     }
+    
 
     public SanPhamCT_Ten(String maSanPham, String tenSanPham, String kieuDang, String thuongHieu, String mauSac) {
         this.maSanPham = maSanPham;
@@ -79,12 +92,21 @@ public class SanPhamCT_Ten {
         this.soLuong = soLuong;
     }
 
-    public double getGiaBan() {
+//    public double getGiaBan() {
+//        return giaBan;
+//    }
+//
+//    public void setGiaBan(double giaBan) {
+//        this.giaBan = giaBan;
+//    }
+
+    public BigDecimal getGiaBan() {
         return giaBan;
     }
 
-    public void setGiaBan(double giaBan) {
+    public void setGiaBan(BigDecimal giaBan) {
         this.giaBan = giaBan;
     }
+    
 
 }

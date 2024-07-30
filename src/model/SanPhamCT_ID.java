@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class SanPhamCT_ID {
 
     private String maCTSP;
@@ -7,18 +9,30 @@ public class SanPhamCT_ID {
     private String ten_ChatLieu;
     private String khoaSanPham;
     private int soLuongSP;
-    private double giaNhapSP;
-    private double giaBanSP;
+//    private double giaNhapSP;
+//    private double giaBanSP;
+    private BigDecimal giaNhapSP;
+    private BigDecimal giabanSP;
     private String ngayNhap;
 
-    public SanPhamCT_ID(String maCTSP, String ten_MauSac, String ten_ChatLieu, String khoaSanPham, int soLuongSP, double giaNhapSP, double giaBanSP, String ngayNhap) {
+//    public SanPhamCT_ID(String maCTSP, String ten_MauSac, String ten_ChatLieu, String khoaSanPham, int soLuongSP, double giaNhapSP, double giaBanSP, String ngayNhap) {
+//        this.maCTSP = maCTSP;
+//        this.ten_MauSac = ten_MauSac;
+//        this.ten_ChatLieu = ten_ChatLieu;
+//        this.khoaSanPham = khoaSanPham;
+//        this.soLuongSP = soLuongSP;
+//        this.giaNhapSP = giaNhapSP;
+//        this.giaBanSP = giaBanSP;
+//        this.ngayNhap = ngayNhap;
+//    }
+    public SanPhamCT_ID(String maCTSP, String ten_MauSac, String ten_ChatLieu, String khoaSanPham, int soLuongSP, BigDecimal giaNhapSP, BigDecimal giabanSP, String ngayNhap) {
         this.maCTSP = maCTSP;
         this.ten_MauSac = ten_MauSac;
         this.ten_ChatLieu = ten_ChatLieu;
         this.khoaSanPham = khoaSanPham;
         this.soLuongSP = soLuongSP;
         this.giaNhapSP = giaNhapSP;
-        this.giaBanSP = giaBanSP;
+        this.giabanSP = giabanSP;
         this.ngayNhap = ngayNhap;
     }
 
@@ -65,22 +79,21 @@ public class SanPhamCT_ID {
         this.soLuongSP = soLuongSP;
     }
 
-    public double getGiaNhapSP() {
-        return giaNhapSP;
-    }
-
-    public void setGiaNhapSP(double giaNhapSP) {
-        this.giaNhapSP = giaNhapSP;
-    }
-
-    public double getGiaBanSP() {
-        return giaBanSP;
-    }
-
-    public void setGiaBanSP(double giaBanSP) {
-        this.giaBanSP = giaBanSP;
-    }
-
+//    public double getGiaNhapSP() {
+//        return giaNhapSP;
+//    }
+//
+//    public void setGiaNhapSP(double giaNhapSP) {
+//        this.giaNhapSP = giaNhapSP;
+//    }
+//
+//    public double getGiaBanSP() {
+//        return giaBanSP;
+//    }
+//
+//    public void setGiaBanSP(double giaBanSP) {
+//        this.giaBanSP = giaBanSP;
+//    }
     public String getNgayNhap() {
         return ngayNhap;
     }
@@ -89,4 +102,21 @@ public class SanPhamCT_ID {
         this.ngayNhap = ngayNhap;
     }
 
+    public BigDecimal getGiaNhapSP() {
+        return giaNhapSP;
+    }
+
+    public void setGiaNhapSP(BigDecimal giaNhapSP) {
+        this.giaNhapSP = giaNhapSP;
+    }
+
+    public BigDecimal getGiabanSP() {
+        return giabanSP;
+    }
+
+    public void setGiabanSP(BigDecimal giabanSP) {
+        this.giabanSP = giabanSP;
+    }
+
+    
 }
