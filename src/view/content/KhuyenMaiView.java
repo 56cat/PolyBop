@@ -52,18 +52,18 @@ public class KhuyenMaiView extends javax.swing.JInternalFrame {
         }
     }
 
-    public void showData(int index) {
-        index = tblKhuyenMai.getSelectedRow();
-        txtMa.setText(tblKhuyenMai.getValueAt(index, 1).toString());
-        txtGiaTri.setText(tblKhuyenMai.getValueAt(index, 2).toString());
-        txtBatDau.setDate((Date) tblKhuyenMai.getValueAt(index, 3));
-        txtKetThuc.setDate((Date) tblKhuyenMai.getValueAt(index, 4));
-        if (tblKhuyenMai.getValueAt(index, 5).toString().equalsIgnoreCase("Còn hoạt động")) {
-            rdoHoatDong.setSelected(true);
-        } else {
-            rdoKhongHoatDong.setSelected(true);
-        }
-    }
+//    public void showData(int index) {
+//        index = tblKhuyenMai.getSelectedRow();
+//        txtMa.setText(tblKhuyenMai.getValueAt(index, 1).toString());
+//        txtGiaTri.setText(tblKhuyenMai.getValueAt(index, 2).toString());
+//        txtBatDau.setDate  instanceof ((Date) tblKhuyenMai.getValueAt(index, 3));
+//        txtKetThuc.setDate((Date) tblKhuyenMai.getValueAt(index, 4));
+//        if (tblKhuyenMai.getValueAt(index, 5).toString().equalsIgnoreCase("Còn hoạt động")) {
+//            rdoHoatDong.setSelected(true);
+//        } else {
+//            rdoKhongHoatDong.setSelected(true);
+//        }
+//    }
 
     KhuyenMai readForm() {
         String ma;
@@ -579,10 +579,10 @@ public class KhuyenMaiView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnXoaKhuyenMaiActionPerformed
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
-        index = tblKhuyenMai.getSelectedRow();
-        if (index > -1) {
-            this.showData(index);
-        }
+//        index = tblKhuyenMai.getSelectedRow();
+//        if (index > -1) {
+//            this.showData(index);
+//        }
         // TODO add your handling code here:
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
 
