@@ -19,3 +19,6 @@ git checkout -b feature_n * ( feature_n * tên nhánh có thể thay đổi )
 
 - Nếu chuyển về master branch chính là cần thiết, sử dụng git command sau:
 git checkout master ( master tên nhánh cần chuyển )
+
+
+Bổ sung thêm validate trong spct nếu thay đổi mã spct thì hiển thị lên tb k dc hiển thị
