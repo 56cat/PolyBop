@@ -4,8 +4,8 @@
  */
 package view.content;
 
-import controller.HoaDonRepository;
-import controller.SanPhamCTSaleRepository;
+import repository.HoaDonRepository;
+import repository.SanPhamCTSaleRepository;
 import java.util.List;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;

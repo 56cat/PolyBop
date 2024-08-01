@@ -1,10 +1,8 @@
 package repository;
 
 import model.SanPham;
-import repository.SanPhamRepository;
-import repository.SanPhamRepository;
 
-public class SanPhamDAO {
+public class SanPhamService {
     
     SanPhamRepository dao = new SanPhamRepository();
     

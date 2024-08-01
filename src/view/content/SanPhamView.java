@@ -16,7 +16,7 @@ import model.LoaiSanPham;
 import model.SanPham;
 import model.ThuongHieu;
 import repository.LoaiSanPhamRepository;
-import controller.MsgBox;
+import repository.MsgBox;
 import repository.SanPhamDAO;
 import repository.SanPhamRepository;
 import repository.ThuongHieuRepository;

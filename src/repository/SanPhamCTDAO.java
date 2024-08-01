@@ -1,11 +1,11 @@
 package repository;
 
-import controller.SanPhamCTRepository;
-import controller.ViRepository;
+import repository.SanPhamCTRepository;
+import repository.ViRepository;
 import java.util.List;
 import model.SanPhamCT_Ten;
-import controller.SanPhamCTRepository;
-import controller.ViRepository;
+import repository.SanPhamCTRepository;
+import repository.ViRepository;
 
 
 public class SanPhamCTDAO {
