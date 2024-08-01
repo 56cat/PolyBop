@@ -1,6 +1,6 @@
 package repository;
 
-import controller.INTFLoaiSanPham;
+import service.INTFLoaiSanPham;
 import dao.JDBCHelper;
 import java.util.logging.Logger;
 import java.sql.ResultSet;

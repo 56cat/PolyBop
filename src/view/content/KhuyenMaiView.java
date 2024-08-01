@@ -4,7 +4,7 @@
  */
 package view.content;
 
-import controller.KhuyenMaiDao;
+import repository.KhuyenMaiDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

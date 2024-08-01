@@ -9,13 +9,13 @@ import model.ChatLieu;
 import model.LoaiSanPham;
 import model.MauSac;
 import model.SanPhamCT_ID;
-import controller.ChatLieuRepository;
+import repository.ChatLieuRepository;
 import repository.LoaiSanPhamRepository;
-import controller.MauSacRepository;
-import controller.MsgBox;
-import controller.SanPhamCTRepository;
-import controller.ThuocTinhSanPhamRepository;
-import controller.Xdate;
+import repository.MauSacRepository;
+import repository.MsgBox;
+import repository.SanPhamCTRepository;
+import repository.ThuocTinhSanPhamRepository;
+import repository.Xdate;
 
 public class ViewSPCT extends javax.swing.JFrame {
 

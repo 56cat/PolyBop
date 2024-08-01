@@ -4,7 +4,7 @@
  */
 package view.content;
 
-import controller.NhanVienRepository;
+import repository.NhanVienRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

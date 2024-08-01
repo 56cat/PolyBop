@@ -1,6 +1,6 @@
 package repository;
 
-import controller.INTFThuongHieu;
+import service.INTFThuongHieu;
 import dao.JDBCHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
