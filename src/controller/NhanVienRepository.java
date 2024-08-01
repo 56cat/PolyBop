@@ -13,17 +13,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.NhanVien;
-import repository.NhanVienService;
+import repository.NhanVienINTF;
 
 /**
  *
  * @author admin
  */
-public class NhanVienServiceImpl implements NhanVienService {
+public class NhanVienRepository implements NhanVienINTF {
 
     private Connection conn;
 
-    public NhanVienServiceImpl() {
+    public NhanVienRepository() {
         try {
             conn = DBconnect.getConnection();
         } catch (Exception e) {

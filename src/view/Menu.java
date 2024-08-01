@@ -36,6 +36,11 @@ public class Menu extends javax.swing.JFrame {
         menu5.setBackground(DefaultColor);
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
+        
+        this.setResizable(false);
+        
+
+        this.setVisible(true);
 
     }
 

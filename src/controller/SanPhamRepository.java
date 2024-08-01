@@ -1,6 +1,6 @@
 package controller;
 
-import repository.SanPhamINTF;
+import controller.SanPhamINTF;
 import dao.JDBCHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;

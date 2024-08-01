@@ -6,11 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -123,6 +119,24 @@ public class KhachHangRepo {
         
         try (PreparedStatement ps = this.conn.prepareStatement(sql)) {
             ps.setString(1, phoneNumber);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0; // Trả về true nếu số điện thoại đã tồn tại
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false; // Trả về false nếu số điện thoại không tồn tại
+    }
+    
+    public boolean isEmailDuplicate(String email) {
+        String sql = "SELECT COUNT(*) FROM KhachHang WHERE Email = ?";
+        
+        try (PreparedStatement ps = this.conn.prepareStatement(sql)) {
+            ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {

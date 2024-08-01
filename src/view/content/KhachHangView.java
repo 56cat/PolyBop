@@ -651,9 +651,17 @@ public class KhachHangView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
             return;
         }
+        if (!sdt.matches("^0[1-9]\\d+$")) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại phải bắt đầu bằng 0 và chữ số tiếp theo phải khác 0!");
+            return;
+        }
 
         if (this.khRepo.isPhoneNumberDuplicate(sdt)) {
             JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại");
+            return;
+        }
+         if (this.khRepo.isEmailDuplicate(email)) {
+            JOptionPane.showMessageDialog(this, "Email đã tồn tại");
             return;
         }
         int trangThai = this.rdoActive.isSelected() ? 1 : 0;
@@ -711,6 +719,7 @@ public class KhachHangView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
             return;
         }
+         
 
         try {
             this.khRepo.update(kh);
