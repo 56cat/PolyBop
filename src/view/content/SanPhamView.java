@@ -9,13 +9,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.LoaiSanPham;
 import model.SanPham;
 import model.ThuongHieu;
 import repository.LoaiSanPhamRepository;
-import repository.MsgBox;
+import controller.MsgBox;
 import repository.SanPhamDAO;
 import repository.SanPhamRepository;
 import repository.ThuongHieuRepository;
@@ -36,6 +37,9 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     public SanPhamView() {
         initComponents();
         init();
+         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
         modelCH = (DefaultTableModel) tblConhang.getModel();
         modelHH = (DefaultTableModel) tblHetHang.getModel();
         filltotablech();
@@ -51,6 +55,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblHinh = new javax.swing.JLabel();
@@ -142,6 +147,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Trạng Thái");
 
+        buttonGroup1.add(rdo);
         rdo.setText("Hết Hàng");
         rdo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +155,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(rdo1);
         rdo1.setSelected(true);
         rdo1.setText("Còn Hàng");
         rdo1.addActionListener(new java.awt.event.ActionListener() {
@@ -285,13 +292,11 @@ public class SanPhamView extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Sản Phẩm Hết Hàng", jPanel3);
@@ -389,7 +394,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,8 +447,8 @@ public class SanPhamView extends javax.swing.JInternalFrame {
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(147, 147, 147))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,6 +684,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThem1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxLoaiSanPham;
     private javax.swing.JComboBox<String> cbxThuongHieu;
     private javax.swing.JButton jButton1;
@@ -772,7 +778,7 @@ public class SanPhamView extends javax.swing.JInternalFrame {
     }
 
     private void chooseImages() {
-        JFileChooser file = new JFileChooser("C:\\Users\\trang\\Desktop\\PoLyBop_01\\logos");
+        JFileChooser file = new JFileChooser("G:\\DuAnBanVi\\PolyBop\\ProductImg");
         if (file.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File filechoser = file.getSelectedFile();
             Ximages.save(filechoser);

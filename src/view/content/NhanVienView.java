@@ -4,11 +4,10 @@
  */
 package view.content;
 
-import controller.NhanVienServiceImpl;
+import controller.NhanVienRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,12 +25,12 @@ public class NhanVienView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel dtm = new DefaultTableModel();
     private List<NhanVien> lists = new ArrayList<>();
-    private NhanVienServiceImpl nvRepo = new NhanVienServiceImpl();
+    private NhanVienRepository nvRepo = new NhanVienRepository();
 
     public NhanVienView() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         dtm = (DefaultTableModel) tbNhanVien.getModel();
         lists = nvRepo.getAll();
@@ -147,6 +146,10 @@ public class NhanVienView extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Số điện thoại phải là số!");
                 return null;
             }
+            if (!sdt.matches("^0[1-9]\\d+$")) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại phải bắt đầu bằng 0 và chữ số tiếp theo phải khác 0!");
+                return null;
+            }
             if (!sdt.matches("^(0)\\d{9}$")) {
                 JOptionPane.showMessageDialog(this, "Số điện thoại phải bắt đầu bằng 0 và có đúng 10 chữ số!");
                 return null;
@@ -253,7 +256,10 @@ public class NhanVienView extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Số điện thoại phải là số và đúng định dạng (bắt đầu bằng 09 hoặc 01 và có 10 chữ số)!");
                 return null;
             }
-
+            if (!sdt.matches("^0[1-9]\\d+$")) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại phải bắt đầu bằng 0 và chữ số tiếp theo phải khác 0!");
+                return null;
+            }
             String hoTen = txtTen.getText().trim();
             if (hoTen.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Họ tên không được để trống!");
@@ -430,7 +436,12 @@ public class NhanVienView extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Địa chỉ");
 
-        cbbDC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam Định ", "Hà Nội", "Đà Nẵng", "Đà Lạt" }));
+        cbbDC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ ", "Đà Nẵng ", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội (Thủ đô)", "Hà Tĩnh", "Hải Dương", "Hải Phòng ", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "Thành phố Hồ Chí Minh ", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
+        cbbDC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbDCActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Mã Nhân Viên");
@@ -747,14 +758,14 @@ public class NhanVienView extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(322, 322, 322)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -881,6 +892,10 @@ public class NhanVienView extends javax.swing.JInternalFrame {
         lists = nvRepo.getAll(); // Lấy tất cả nhân viên từ cơ sở dữ liệu
         loadDataTable(lists);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbbDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbDCActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

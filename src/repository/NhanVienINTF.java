@@ -11,7 +11,7 @@ import model.NhanVien;
  *
  * @author admin
  */
-public interface NhanVienService {
+public interface NhanVienINTF {
     List<NhanVien> getAll();
 
     void them(NhanVien nv) throws Exception;

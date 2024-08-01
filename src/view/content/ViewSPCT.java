@@ -10,7 +10,7 @@ import model.LoaiSanPham;
 import model.MauSac;
 import model.SanPhamCT_ID;
 import controller.ChatLieuRepository;
-import controller.LoaiSanPhamRepository;
+import repository.LoaiSanPhamRepository;
 import controller.MauSacRepository;
 import controller.MsgBox;
 import controller.SanPhamCTRepository;
