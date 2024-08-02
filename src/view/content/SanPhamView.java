@@ -15,19 +15,19 @@ import javax.swing.table.TableRowSorter;
 import model.LoaiSanPham;
 import model.SanPham;
 import model.ThuongHieu;
-import repository.LoaiSanPhamRepository;
+import repository.LoaiSanPhamDao;
 import repository.MsgBox;
 import repository.SanPhamDAO;
 import repository.SanPhamRepository;
-import repository.ThuongHieuRepository;
+import repository.ThuongHieuDao;
 import repository.Ximages;
 
 public class SanPhamView extends javax.swing.JInternalFrame {
 
     Locale vn = new Locale("vi", "VN");
     SanPhamRepository dao_vi = new SanPhamRepository();
-    ThuongHieuRepository dao_th = new ThuongHieuRepository();
-    LoaiSanPhamRepository dao_lsp = new LoaiSanPhamRepository();
+    ThuongHieuDao dao_th = new ThuongHieuDao();
+    LoaiSanPhamDao dao_lsp = new LoaiSanPhamDao();
     int row = -1;
     DefaultTableModel modelCH = new DefaultTableModel();
     DefaultTableModel modelHH = new DefaultTableModel();
