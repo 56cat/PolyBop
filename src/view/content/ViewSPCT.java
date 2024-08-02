@@ -382,12 +382,12 @@ public class ViewSPCT extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Quản lý màu sắc sản phẩm
-//        new MauSacJDiaLog(null, true).setVisible(true);
+        new MauSacJDiaLog(null, true).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Quản lý chất liệu
-//        new ChatLieuJDiaLog(null, true).setVisible(true);
+        new ChatLieuJDiaLog(null, true).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed

@@ -600,6 +600,8 @@ public class SanPhamView extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        fillcomboboxThuonghieu();
+        new ThuongHieuJDiaLog(null, true).setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtTenViActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenViActionPerformed
@@ -635,6 +637,8 @@ public class SanPhamView extends javax.swing.JInternalFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        new LoaiSanPhamJDiaLog(null, true).setVisible(true);
+        fillComboboxLoaiSanPham();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
