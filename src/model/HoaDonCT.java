@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  * @author Admin
  */
 public class HoaDonCT {
+
     private int idHoaDonChiTiet;
     private int idHoaDon;
     private int idChiTietSanPham;
@@ -18,11 +19,16 @@ public class HoaDonCT {
     private int soLuong;
     private BigDecimal donGia;
     private boolean trangThai;
+    private String tenSanPham;
+    private String tenMauSac;
+    private String tenChatLieu;
+    private BigDecimal giaBan;
 
+    // Constructors
     public HoaDonCT() {
     }
 
-    public HoaDonCT(int idHoaDonChiTiet, int idHoaDon, int idChiTietSanPham, String maHoaDonChiTiet, int soLuong, BigDecimal donGia, boolean trangThai) {
+    public HoaDonCT(int idHoaDonChiTiet, int idHoaDon, int idChiTietSanPham, String maHoaDonChiTiet, int soLuong, BigDecimal donGia, boolean trangThai, String tenSanPham, String tenMauSac, String tenChatLieu, BigDecimal giaBan) {
         this.idHoaDonChiTiet = idHoaDonChiTiet;
         this.idHoaDon = idHoaDon;
         this.idChiTietSanPham = idChiTietSanPham;
@@ -30,8 +36,13 @@ public class HoaDonCT {
         this.soLuong = soLuong;
         this.donGia = donGia;
         this.trangThai = trangThai;
+        this.tenSanPham = tenSanPham;
+        this.tenMauSac = tenMauSac;
+        this.tenChatLieu = tenChatLieu;
+        this.giaBan = giaBan;
     }
 
+    // Getters and Setters
     public int getIdHoaDonChiTiet() {
         return idHoaDonChiTiet;
     }
@@ -87,5 +98,37 @@ public class HoaDonCT {
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
-    
+
+    public String getTenSanPham() {
+        return tenSanPham;
+    }
+
+    public void setTenSanPham(String tenSanPham) {
+        this.tenSanPham = tenSanPham;
+    }
+
+    public String getTenMauSac() {
+        return tenMauSac;
+    }
+
+    public void setTenMauSac(String tenMauSac) {
+        this.tenMauSac = tenMauSac;
+    }
+
+    public String getTenChatLieu() {
+        return tenChatLieu;
+    }
+
+    public void setTenChatLieu(String tenChatLieu) {
+        this.tenChatLieu = tenChatLieu;
+    }
+
+    public BigDecimal getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(BigDecimal giaBan) {
+        this.giaBan = giaBan;
+    }
+
 }

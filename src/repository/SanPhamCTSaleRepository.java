@@ -7,16 +7,16 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 import dao.DBconnect;
-import service.SanPhamCTITF;
 import java.math.BigDecimal;
 import java.sql.*;
 import model.SanPhamCTSale;
+import service.INTFTSanPhamCTSale;
 
 /**
  *
  * @author Admin
  */
-public class SanPhamCTSaleRepository implements SanPhamCTITF {
+public class SanPhamCTSaleRepository implements INTFTSanPhamCTSale {
 
     @Override
     public List<SanPhamCTSale> getData(String key) {
@@ -57,5 +57,28 @@ public class SanPhamCTSaleRepository implements SanPhamCTITF {
             e.printStackTrace();
         }
         return listSanPhamCT;
+    }
+
+    @Override
+    public void suaSLSPCT(int idSPCT, int soLuong) {
+        String sql = "UPDATE ChiTietSanPham\n"
+                + " SET SoLuong = " + soLuong + "\n"
+                + " WHERE IDChiTietSanPham = " + idSPCT + "";
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareCall(sql)) {
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void themSoLuongSP(int idSPCT, int soLuong) {
+        String sql = "UPDATE ChiTietSanPham\n"
+                + " SET SoLuong =  SoLuong +  " + soLuong + "\n"
+                + " WHERE IDChiTietSanPham = " + idSPCT + "";
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareCall(sql)) {
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

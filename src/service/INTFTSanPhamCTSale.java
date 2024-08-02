@@ -6,12 +6,16 @@ package service;
 
 import java.util.List;
 import model.SanPhamCTSale;
-import model.SanPhamCT_ID;
 
 /**
  *
  * @author Admin
  */
-public interface SanPhamCTITF {
+public interface INTFTSanPhamCTSale {
+
     List<SanPhamCTSale> getData(String key);
+
+    void suaSLSPCT(int idSPCT, int soLuong);
+
+    void themSoLuongSP(int idSPCT, int soLuong);
 }
