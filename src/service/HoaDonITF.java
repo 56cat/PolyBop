@@ -4,6 +4,7 @@
  */
 package service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import model.HoaDon;
 
@@ -12,5 +13,12 @@ import model.HoaDon;
  * @author Admin
  */
 public interface HoaDonITF {
-   List<HoaDon> getAll();
+
+    List<HoaDon> getAll();
+
+    void taoHoaDon(int idNhanVien);
+
+    void capNhatTongHoaDon(int idHoaDon, BigDecimal thanhTien);
+
+    void capNhatTrangThai(int idHoaDon, String trangThai);
 }
