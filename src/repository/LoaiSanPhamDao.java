@@ -1,33 +1,27 @@
 package repository;
 
-import service.INTFLoaiSanPham;
-import dao.JDBCHelper;
-import java.util.logging.Logger;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.LoaiSanPham;
+import dao.JDBCHelper;
+import service.INTFLoaiSanPham;
 
-public class LoaiSanPhamRepository implements INTFLoaiSanPham {
-
-    private static final Logger logger = Logger.getLogger(LoaiSanPhamRepository.class.getName());
+public class LoaiSanPhamDao implements INTFLoaiSanPham {
 
     String selectAll = "select * from LoaiSanPham";
-    String selectID = "select * from LoaiSanPham where Ma_LoaiSanPham= ?";
+    String selectID = "select * from LoaiSanPham where  Ma_LoaiSanPham = ?";
     String selectById = "select * from LoaiSanPham where IDLoaiSanPham =?";
     String update = "update LoaiSanPham set  TenLoaiSanPham =?, TrangThai=? where Ma_LoaiSanPham=?";
     String insert = "INSERT INTO LoaiSanPham (Ma_LoaiSanPham, TenLoaiSanPham, TrangThai) VALUES (?, ?, ?)";
-
     @Override
     public void insert(LoaiSanPham sp) {
-//        JDBCHelper.update(insert, sp.getMaLoaiSanPham(), sp.getTenLoaiSanPham(), sp.isTrangThai());
-        JDBCHelper.update(insert, sp.getMaLoaiSanPham(), sp.getTenLoaiSanPham(), sp.isTrangThai());
+        JDBCHelper.update(insert, sp.getMaLoaiSanPham(),sp.getTenLoaiSanPham(),sp.isTrangThai());
     }
 
     @Override
     public void update(LoaiSanPham sp) {
-//        JDBCHelper.update(update, sp.getTenLoaiSanPham(), sp.isTrangThai(), sp.getMaLoaiSanPham());
-        JDBCHelper.update(update, sp.getTenLoaiSanPham(), sp.isTrangThai(), sp.getMaLoaiSanPham());
+        JDBCHelper.update(update, sp.getTenLoaiSanPham(),sp.isTrangThai(),sp.getMaLoaiSanPham());
     }
 
     @Override
@@ -66,49 +60,24 @@ public class LoaiSanPhamRepository implements INTFLoaiSanPham {
     }
 
     public String selecNameById(int id) {
-        // Kiểm tra xem id có hợp lệ không
-        if (id <= 0) {
-            logger.warning("ID không hợp lệ: " + id);
-            return null;
-        }
-
-        // Thực hiện truy vấn để lấy danh sách loại sản phẩm
-        List<LoaiSanPham> list = selectBySQL(selectById, id);
-
-        // Kiểm tra và trả về kết quả
-        if (!list.isEmpty()) {
-            return list.get(0).getTenLoaiSanPham();
-        } else {
-            logger.warning("Không tìm thấy loại sản phẩm với ID: " + id);
-            return null;
-        }
+        return selectBySQL(selectById, id).get(0).getTenLoaiSanPham();
     }
-
-    public int selectIdByName(String name) {
-        List<LoaiSanPham> list = selectBySQL("select * from LoaiSanPham where TenLoaiSanPham =?", name);
-        if (!list.isEmpty()) {
-            return list.get(0).getIdLoaiSanPham();
-        } else {
-            logger.warning("Không tìm thấy loại sản phẩm với tên: " + name);
-            return -1;
-        }
+        public int selectIdByName(String name){
+        String sql = "select * from LoaiSanPham where TenLoaiSanPham =?";
+        return selectBySQL(sql, name).get(0).getIdLoaiSanPham();
     }
-
     public LoaiSanPham selectID1(String id) {
         List<LoaiSanPham> list = selectBySQL(selectID, id);
-        if (!list.isEmpty()) {
-            return list.get(0);
-        } else {
-            logger.warning("Không tìm thấy loại sản phẩm với mã: " + id);
+        if (list.isEmpty()) {
             return null;
         }
+        return list.get(0);
     }
-
     public int select_Max_id_java() {
         try {
-            String sql = "select max(IDLoaiSanPham) from LoaiSanPham";
+            String sql = "select max(cast(substring(Ma_LoaiSanPham,4,LEN(IDLoaiSanPham))as int)) from LoaiSanPham ";
             ResultSet rs = JDBCHelper.query(sql);
-            if (rs.next()) {
+            while (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -116,5 +85,4 @@ public class LoaiSanPhamRepository implements INTFLoaiSanPham {
         }
         return 0;
     }
-
 }

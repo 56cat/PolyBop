@@ -15,19 +15,19 @@ import javax.swing.table.TableRowSorter;
 import model.LoaiSanPham;
 import model.SanPham;
 import model.ThuongHieu;
-import repository.LoaiSanPhamRepository;
+import repository.LoaiSanPhamDao;
 import repository.MsgBox;
 import repository.SanPhamDAO;
 import repository.SanPhamRepository;
-import repository.ThuongHieuRepository;
+import repository.ThuongHieuDao;
 import repository.Ximages;
 
 public class SanPhamView extends javax.swing.JInternalFrame {
 
     Locale vn = new Locale("vi", "VN");
     SanPhamRepository dao_vi = new SanPhamRepository();
-    ThuongHieuRepository dao_th = new ThuongHieuRepository();
-    LoaiSanPhamRepository dao_lsp = new LoaiSanPhamRepository();
+    ThuongHieuDao dao_th = new ThuongHieuDao();
+    LoaiSanPhamDao dao_lsp = new LoaiSanPhamDao();
     int row = -1;
     DefaultTableModel modelCH = new DefaultTableModel();
     DefaultTableModel modelHH = new DefaultTableModel();
@@ -600,6 +600,8 @@ public class SanPhamView extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        fillcomboboxThuonghieu();
+        new ThuongHieuJDiaLog(null, true).setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtTenViActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenViActionPerformed
@@ -635,6 +637,8 @@ public class SanPhamView extends javax.swing.JInternalFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        new LoaiSanPhamJDiaLog(null, true).setVisible(true);
+        fillComboboxLoaiSanPham();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

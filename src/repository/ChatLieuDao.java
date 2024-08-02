@@ -1,13 +1,13 @@
 package repository;
 
-import service.INTFChatLieu;
 import dao.JDBCHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.ChatLieu;
+import service.INTFChatLieu;
 
-public class ChatLieuRepository implements INTFChatLieu {
+public class ChatLieuDao implements INTFChatLieu {
 
     String selectAll = "select *from ChatLieu";
     String update = "update ChatLieu set TenChatLieu =? , TrangThai = ? where Ma_ChatLieu =?";

@@ -9,9 +9,9 @@ import model.ChatLieu;
 import model.LoaiSanPham;
 import model.MauSac;
 import model.SanPhamCT_ID;
-import repository.ChatLieuRepository;
-import repository.LoaiSanPhamRepository;
-import repository.MauSacRepository;
+import repository.ChatLieuDao;
+import repository.LoaiSanPhamDao;
+import repository.MauSacDao;
 import repository.MsgBox;
 import repository.SanPhamCTRepository;
 import repository.ThuocTinhSanPhamRepository;
@@ -21,9 +21,9 @@ public class ViewSPCT extends javax.swing.JFrame {
 
     DefaultTableModel mol = new DefaultTableModel();
     SanPhamCTRepository service = new SanPhamCTRepository();
-    MauSacRepository daoms = new MauSacRepository();
-    ChatLieuRepository daocl = new ChatLieuRepository();
-    LoaiSanPhamRepository daolv = new LoaiSanPhamRepository();
+    MauSacDao daoms = new MauSacDao();
+    ChatLieuDao daocl = new ChatLieuDao();
+    LoaiSanPhamDao daolv = new LoaiSanPhamDao();
     ThuocTinhSanPhamRepository serviceTT = new ThuocTinhSanPhamRepository();
 
     List<MauSac> listMauSac;
@@ -382,12 +382,12 @@ public class ViewSPCT extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Quản lý màu sắc sản phẩm
-//        new MauSacJDiaLog(null, true).setVisible(true);
+        new MauSacJDiaLog(null, true).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Quản lý chất liệu
-//        new ChatLieuJDiaLog(null, true).setVisible(true);
+        new ChatLieuJDiaLog(null, true).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed

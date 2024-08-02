@@ -1,13 +1,15 @@
 package repository;
 
+
+import dao.JDBCHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import service.INTFMauSac;
-import dao.JDBCHelper;
 import model.MauSac;
+import service.INTFMauSac;
 
-public class MauSacRepository implements INTFMauSac {
+
+public class MauSacDao implements INTFMauSac {
 
     String selectAll = "select * from MauSac";
     String selectID = "select * from MauSac where Ma_MauSac= ?";
@@ -46,9 +48,9 @@ public class MauSacRepository implements INTFMauSac {
             ResultSet rs = JDBCHelper.query(sql, args);
             while (rs.next()) {
                 MauSac ms = new MauSac();
-                ms.setIdMauSac(rs.getInt("IDMauSac"));
+                ms.setIdMauSac(rs.getInt("idMauSac"));
                 ms.setMa_MauSac(rs.getString("Ma_MauSac"));
-                ms.setTen_MauSac(rs.getString("TenMauSac"));
+                ms.setTen_MauSac(rs.getString("tenMauSac"));
                 ms.setTrangThai(rs.getBoolean("trangThai"));
                 lisst.add(ms);
             }
