@@ -7,17 +7,19 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 import model.HoaDon;
-import  dao.DBconnect;
+import dao.DBconnect;
 import service.HoaDonITF;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Date;
+import model.KhachHang;
 
 /**
  *
  * @author Admin
  */
-public class HoaDonRepository implements HoaDonITF{
+public class HoaDonRepository implements HoaDonITF {
+
     @Override
     public List<HoaDon> getAll() {
         String sql = "SELECT  [IDHoaDon]\n"
@@ -87,8 +89,7 @@ public class HoaDonRepository implements HoaDonITF{
                 + "           ,GETDATE()\n"
                 + "           ,0)";
 
-        try (Connection con = DBconnect.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, newBillCode);
             ps.execute();
         } catch (SQLException e) {
@@ -100,8 +101,7 @@ public class HoaDonRepository implements HoaDonITF{
         HoaDon hoaDon = null;
         String sql = "SELECT * FROM HoaDon WHERE IDHoaDon = ?";
 
-        try (Connection con = DBconnect.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, idHoaDon);
             ResultSet rs = ps.executeQuery();
 
@@ -118,8 +118,7 @@ public class HoaDonRepository implements HoaDonITF{
 
     public String getHoaDonCu() {
         String sql = "SELECT TOP 1 Ma_HoaDon FROM HoaDon ORDER BY IDHoaDon DESC";
-        try (Connection con = DBconnect.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = DBconnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return rs.getString(1);
@@ -192,4 +191,6 @@ public class HoaDonRepository implements HoaDonITF{
             e.printStackTrace();
         }
     }
+
+    
 }

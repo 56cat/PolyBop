@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- *
- * @author Admin
- */
-public class HoaDon {
+public class HoaDonShow {
     
     private int idHoaDon;
     private int idKhachHang;
@@ -20,16 +13,14 @@ public class HoaDon {
     private String maHoaDon;
     private BigDecimal tienSauGiamGia;
     private BigDecimal thanhTien;
-    private boolean phuongThucThanhToan;
+    private int phuongThucThanhToan;
     private Date ngayThanhToan;
-    private boolean trangThai;
-    private String tenKH;
-    private String tenNV;
+    private int trangThai;
 
-    public HoaDon() {
+    public HoaDonShow() {
     }
 
-    public HoaDon(int idHoaDon, int idKhachHang, int idNhanVien, int idKhuyenMai, String maHoaDon, BigDecimal tienSauGiamGia, BigDecimal thanhTien, boolean phuongThucThanhToan, Date ngayThanhToan, boolean trangThai, String tenKH, String tenNV) {
+    public HoaDonShow(int idHoaDon, int idKhachHang, int idNhanVien, int idKhuyenMai, String maHoaDon, BigDecimal tienSauGiamGia, BigDecimal thanhTien, int phuongThucThanhToan, Date ngayThanhToan, int trangThai) {
         this.idHoaDon = idHoaDon;
         this.idKhachHang = idKhachHang;
         this.idNhanVien = idNhanVien;
@@ -40,8 +31,6 @@ public class HoaDon {
         this.phuongThucThanhToan = phuongThucThanhToan;
         this.ngayThanhToan = ngayThanhToan;
         this.trangThai = trangThai;
-        this.tenKH = tenKH;
-        this.tenNV = tenNV;
     }
 
     public int getIdHoaDon() {
@@ -100,11 +89,11 @@ public class HoaDon {
         this.thanhTien = thanhTien;
     }
 
-    public boolean isPhuongThucThanhToan() {
+    public int getPhuongThucThanhToan() {
         return phuongThucThanhToan;
     }
 
-    public void setPhuongThucThanhToan(boolean phuongThucThanhToan) {
+    public void setPhuongThucThanhToan(int phuongThucThanhToan) {
         this.phuongThucThanhToan = phuongThucThanhToan;
     }
 
@@ -116,29 +105,13 @@ public class HoaDon {
         this.ngayThanhToan = ngayThanhToan;
     }
 
-    public boolean isTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(boolean trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-
-    public String getTenKH() {
-        return tenKH;
-    }
-
-    public void setTenKH(String tenKH) {
-        this.tenKH = tenKH;
-    }
-
-    public String getTenNV() {
-        return tenNV;
-    }
-
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
-    }
-
+    
     
 }
