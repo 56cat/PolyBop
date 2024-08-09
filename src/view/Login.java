@@ -12,6 +12,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
+
+        this.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
